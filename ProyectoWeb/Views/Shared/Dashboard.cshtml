@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta name="description" content="My ASP.NET Application" />
+
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="wrapper">
+
+        @RenderSection("menu",required:true)
+
+        <div class="container-fluid">
+           @RenderBody();
+        </div><!--fin div container-->
+        <!--div con class footer-->
+        <div class="footer">
+            <p>&copy; @DateTime.Now.Year - KsL_Tapa</p>
+        </div><!--fin div footer-->
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Informacion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.num_orden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idcliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idusuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_orden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idcliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idusuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_ingreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_salida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_trabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observaciones)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model ProyectoWeb.Models.Informacion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Informacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.num_orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idcliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idusuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idusuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_trabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_trabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
