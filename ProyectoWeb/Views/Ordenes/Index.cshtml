@@ -10,11 +10,70 @@
         <table id="mytable" class="table table-striped table-bordered table-responsive">
             <h1 class="title-top-table">
                 Cliente
-            <tr><th>Lunes</th></tr>
-                @foreach (var lunes in (List<String>)(ViewBag.lunes))
-                {
-                    <tr><td>@lunes</td></tr>
-                }
+            <tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th></tr>
+@for (var i = 0; i < ViewBag.Lunes.Count + ViewBag.Martes.Count + ViewBag.Miercoles.Count + ViewBag.Jueves.Count + ViewBag.Viernes.Count; i++)
+{
+    if (i < ViewBag.Lunes.Count || i < ViewBag.Martes.Count || i < ViewBag.Miercoles.Count || i < ViewBag.Jueves.Count || i < ViewBag.Viernes.Count)
+    {
+        <tr>
+
+            @if (i < ViewBag.Lunes.Count)
+            {
+
+                <td>@ViewBag.Lunes[i].num_orden</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+            @if (i < ViewBag.Martes.Count)
+            {
+
+                <td>@ViewBag.Martes[i].num_orden</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+            @if (i < ViewBag.Miercoles.Count)
+            {
+
+                <td>@ViewBag.Miercoles[i].num_orden</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+            @if (i < ViewBag.Jueves.Count)
+            {
+
+                <td>@ViewBag.Jueves[i].num_orden</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+            @if (i < ViewBag.Viernes.Count)
+            {
+
+                <td>@ViewBag.Viernes[i].num_orden</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+        </tr>
+    }
+
+
+
+}
+
         </table>
     </div>
 </div>
