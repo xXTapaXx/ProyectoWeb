@@ -224,12 +224,14 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
+    <Compile Include="Controllers\OrdenesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Informacion.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -378,6 +380,7 @@
     <Content Include="Views\Informacion\Edit.cshtml" />
     <Content Include="Views\Informacion\Index.cshtml" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
+    <Content Include="Views\Ordenes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

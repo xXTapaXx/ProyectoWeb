@@ -36,12 +36,20 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
 
                 <ul class="nav navbar-nav side-nav">
-                    <li>@Html.ActionLink(" Insertar Cliente", "Index", "Clientes", new { @class = "glyphicon glyphicon-folder-open" })</li>
+                    <li><h3>Mantenimiento</h3></li>
+                    <li class="cliente">@Html.RouteLink(" Insertar Cliente", new { controller = "Clientes", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
+                    <li class="usuario">@Html.RouteLink(" Insertar Usuario", new { controller = "Usuarios", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
+                    <li class="informacion">@Html.RouteLink(" Insertar Informacion", new { controller = "Informacion", action = "index" }, new { @class = "glyphicon glyphicon-folder-open" })</li>
+                    <li><h3>Mantenimiento</h3></li>
+                    <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" }, new { @class = "glyphicon glyphicon-search" })</li>
+                    <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
+                    <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" }, new { @class = "glyphicon glyphicon-folder-open" })</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </nav>
         <div class="container-fluid">
-            @RenderBody();
+            @RenderBody()
         </div><!--fin div container-->
         <hr />
         <footer>
