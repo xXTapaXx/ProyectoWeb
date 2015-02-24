@@ -19,8 +19,17 @@
 
             @if (i < ViewBag.Lunes.Count)
             {
+                if (@ViewBag.Lunes[i].ubicacion == 5)
+                {
+                    <td class="finalizo">@ViewBag.Lunes[i].num_orden</td>
+                }
+                else
+                {
+                    <td>@ViewBag.Lunes[i].num_orden</td>
 
-                <td>@ViewBag.Lunes[i].num_orden</td>
+                }
+
+
             }
             else
             {
@@ -30,7 +39,15 @@
             @if (i < ViewBag.Martes.Count)
             {
 
-                <td>@ViewBag.Martes[i].num_orden</td>
+                if (@ViewBag.Martes[i].ubicacion == 5)
+                {
+                    <td class="finalizo">@ViewBag.Martes[i].num_orden</td>
+                }
+                else
+                {
+                    <td>@ViewBag.Martes[i].num_orden</td>
+
+                }
             }
             else
             {
@@ -40,7 +57,15 @@
             @if (i < ViewBag.Miercoles.Count)
             {
 
-                <td>@ViewBag.Miercoles[i].num_orden</td>
+                if (@ViewBag.Miercoles[i].ubicacion == 5)
+                {
+                    <td class="finalizo">@ViewBag.Miercoles[i].num_orden</td>
+                }
+                else
+                {
+                    <td>@ViewBag.Miercoles[i].num_orden</td>
+
+                }
             }
             else
             {
@@ -50,7 +75,15 @@
             @if (i < ViewBag.Jueves.Count)
             {
 
-                <td>@ViewBag.Jueves[i].num_orden</td>
+                if (@ViewBag.Jueves[i].ubicacion == 5)
+                {
+                    <td class="finalizo">@ViewBag.Jueves[i].num_orden</td>
+                }
+                else
+                {
+                    <td>@ViewBag.Jueves[i].num_orden</td>
+
+                }
             }
             else
             {
@@ -60,7 +93,15 @@
             @if (i < ViewBag.Viernes.Count)
             {
 
-                <td>@ViewBag.Viernes[i].num_orden</td>
+                if (@ViewBag.Viernes[i].ubicacion == 5)
+                {
+                    <td class="finalizo">@ViewBag.Viernes[i].num_orden</td>
+                }
+                else
+                {
+                    <td>@ViewBag.Viernes[i].num_orden</td>
+
+                }
             }
             else
             {

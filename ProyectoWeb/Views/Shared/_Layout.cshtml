@@ -12,49 +12,59 @@
 </head>
 <body>
 
-    <div class="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand nombreMenu" href="#">Imprenta San Carlos</a>
+                <a class="navbar-brand" href="index.html">Imprenta San Carlos</a>
             </div>
-
-
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Bienvenido Administrador</a>
-
-            </ul>
-
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-
-                <ul class="nav navbar-nav side-nav">
-                    <li><h3>Mantenimiento</h3></li>
-                    <li class="cliente">@Html.RouteLink(" Insertar Cliente", new { controller = "Clientes", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
-                    <li class="usuario">@Html.RouteLink(" Insertar Usuario", new { controller = "Usuarios", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
-                    <li class="informacion">@Html.RouteLink(" Insertar Informacion", new { controller = "Informacion", action = "index" }, new { @class = "glyphicon glyphicon-folder-open" })</li>
-                    <li><h3>Mantenimiento</h3></li>
-                    <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" }, new { @class = "glyphicon glyphicon-search" })</li>
-                    <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" }, new { @class = "glyphicon glyphicon-user" })</li>
-                    <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" }, new { @class = "glyphicon glyphicon-folder-open" })</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()/@DateTime.Now.Year &nbsp;<a href="#" class="btn btn-danger square-btn-adjust">Logout</a></div>
         </nav>
-        <div class="container-fluid">
-            @RenderBody()
-        </div><!--fin div container-->
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - KsL_Tapa</p>
-        </footer>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center"><img src="images/find_user.png" class="user-image img-responsive" /></li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Mantenimiento<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="cliente">@Html.RouteLink(" Insertar Cliente", new { controller = "Clientes", action = "index" }, new { @class = "fa fa-male fa-female" })</li>
+                            <li class="usuario">@Html.RouteLink(" Insertar Usuario", new { controller = "Usuarios", action = "index" }, new { @class = "fa fa-user" })</li>
+                            <li class="informacion">@Html.RouteLink(" Insertar Informacion", new { controller = "Informacion", action = "index" }, new { @class = "fa fa-archive" })</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Procesos<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" }, new { @class = "fa fa-edit" })</li>
+                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" }, new { @class = "fa fa-edit" })</li>
+                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" }, new { @class = "fa fa-edit" })</li> 
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+        
+    </div>
+        </nav>
+    <div class="container-fluid " id="page-wrapper">
+        @RenderBody()
+        
+    </div><!--fin div container-->
+
     </div>
     
     

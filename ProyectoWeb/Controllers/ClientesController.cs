@@ -144,7 +144,7 @@ namespace ProyectoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Cliente.Find(id);
+            Cliente cliente = db.Cliente.Find(id);                     
             db.Cliente.Remove(cliente);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -16,13 +16,13 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             var nullOrderer = new NullOrderer();
 
             var cssBundle = new StyleBundle("~/bundles/css");
-            cssBundle.Include("~/Content/Site.less", "~/Content/bootstrap/bootstrap.less");
+            cssBundle.Include( "~/Content/bootstrap/bootstrap.less", "~/Content/css/font-awesome.css", "~/Content/css/custom.css");
             cssBundle.Transforms.Add(cssTransformer);
             cssBundle.Orderer = nullOrderer;
             bundles.Add(cssBundle);
 
             var jqueryBundle = new ScriptBundle("~/bundles/jquery");
-            jqueryBundle.Include("~/Scripts/jquery-{version}.js");
+            jqueryBundle.Include("~/Scripts/jquery-{version}.js", "~/Scripts/js/morris-0.4.3.min.js");
             jqueryBundle.Transforms.Add(jsTransformer);
             jqueryBundle.Orderer = nullOrderer;
             bundles.Add(jqueryBundle);
@@ -43,7 +43,7 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             bundles.Add(modernizrBundle);
 
             var bootstrapBundle = new ScriptBundle("~/bundles/bootstrap");
-            bootstrapBundle.Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js");
+            bootstrapBundle.Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js",  "~/Scripts/js/jquery.metisMenu.js", "~/Scripts/js/raphael-2.1.0.min.js", "~/Scripts/js/morris.js",  "~/Scripts/js/custom.js");
             bootstrapBundle.Transforms.Add(jsTransformer);
             bootstrapBundle.Orderer = nullOrderer;
             bundles.Add(bootstrapBundle);

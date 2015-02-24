@@ -20,8 +20,7 @@ namespace ProyectoWeb.Controllers
             List<Estado> list_miercoles = new List<Estado>();
             List<Estado> list_jueves = new List<Estado>();
             List<Estado> list_viernes = new List<Estado>();
-            List<int> contadorConsultas = new List<int>();
-            int contador = 0;
+            
 
             DateTime fechaActual = DateTime.Now;
             DateTime fechaMinima = DateTime.MinValue;
@@ -35,7 +34,8 @@ namespace ProyectoWeb.Controllers
 
             //Lunes
 
-            var Lunes =  informacion.Informacion.SqlQuery("SELECT * FROM informacion where fecha_salida =" + "'" + fecha_Lunes + "'").ToList() ;
+             var Lunes =  informacion.Informacion.SqlQuery("SELECT * FROM informacion where fecha_salida =" + "'" + fecha_Lunes + "'").ToList() ;
+            //var Lunes = from o in informacion.Informacion where o.fecha_salida = fecha_Lunes;
             
             for (var i = 0; i < Lunes.Count; i++)
             {
@@ -44,7 +44,7 @@ namespace ProyectoWeb.Controllers
 
                 list_lunes.Add(new Estado() { num_orden = result[0].num_orden, ubicacion = result[0].ubicacion });
 
-                contador += 1;
+                
 
             }
             ViewBag.Lunes = list_lunes;
@@ -60,7 +60,7 @@ namespace ProyectoWeb.Controllers
 
                 list_martes.Add(new Estado() { num_orden = result[0].num_orden, ubicacion = result[0].ubicacion });
 
-                contador += 1;
+                
 
             }
             ViewBag.Martes = list_martes;
@@ -76,7 +76,7 @@ namespace ProyectoWeb.Controllers
 
                 list_miercoles.Add(new Estado() { num_orden = result[0].num_orden, ubicacion = result[0].ubicacion });
 
-                contador += 1;
+               
 
             }
             ViewBag.Miercoles = list_miercoles;
@@ -92,7 +92,7 @@ namespace ProyectoWeb.Controllers
 
                 list_jueves.Add(new Estado() { num_orden = result[0].num_orden, ubicacion = result[0].ubicacion });
 
-                contador += 1;
+               
 
             }
             ViewBag.Jueves = list_jueves;
@@ -108,12 +108,12 @@ namespace ProyectoWeb.Controllers
 
                 list_viernes.Add(new Estado() { num_orden = result[0].num_orden, ubicacion = result[0].ubicacion });
 
-                contador += 1;
+                
 
             }
             ViewBag.Viernes = list_viernes;
             
-            ViewBag.contador = contador;
+            
 
 
             return View();
