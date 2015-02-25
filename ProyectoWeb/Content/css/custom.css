@@ -12,6 +12,8 @@
 /*==============================================
     GENERAL  STYLES    
     =============================================*/
+
+
 .title-top-table {
 border-bottom: 2px solid #a5ced8;
 color: #5a6876;
@@ -270,7 +272,7 @@ font-weight: 700;
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
 	
-	background:#0A0A0A;
+	background:#0A0A0A !important;
 	outline:0;
 }
 
@@ -317,7 +319,7 @@ font-weight: 700;
 }
 .navbar-cls-top .navbar-brand:hover {
 
-background: #C90000;
+background: #C90000 !important;
 color:#fff;
 
 }
@@ -331,7 +333,7 @@ border:0px solid black;
     background: #A70303;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-background-color: #B40101;
+background-color: #B40101 !important;
 }
 .navbar-default .navbar-toggle {
 border-color: #fff;

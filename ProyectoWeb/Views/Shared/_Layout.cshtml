@@ -32,23 +32,23 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li class="text-center"><img src="images/find_user.png" class="user-image img-responsive" /></li>
+                    <li class="text-center"><img src="../../../images/find_user.png" class="user-image img-responsive" /></li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Mantenimiento<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cogs"></i> Mantenimiento<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="cliente">@Html.RouteLink(" Insertar Cliente", new { controller = "Clientes", action = "index" }, new { @class = "fa fa-male fa-female" })</li>
-                            <li class="usuario">@Html.RouteLink(" Insertar Usuario", new { controller = "Usuarios", action = "index" }, new { @class = "fa fa-user" })</li>
-                            <li class="informacion">@Html.RouteLink(" Insertar Informacion", new { controller = "Informacion", action = "index" }, new { @class = "fa fa-archive" })</li>
+                            <li class="cliente">@Html.RouteLink("Cliente", new { controller = "Clientes", action = "index" })</li>
+                            <li class="usuario">@Html.RouteLink("Usuario", new { controller = "Usuarios", action = "index" })</li>
+                            <li class="informacion">@Html.RouteLink("Informacion", new { controller = "Informacion", action = "index" })</li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Procesos<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-windows"></i> Procesos<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" }, new { @class = "fa fa-edit" })</li>
-                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" }, new { @class = "fa fa-edit" })</li>
-                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" }, new { @class = "fa fa-edit" })</li> 
+                            <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" })</li>
+                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" })</li>
+                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" })</li> 
                         </ul>
                     </li>
 
@@ -60,6 +60,7 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
         
     </div>
         </nav>
+
     <div class="container-fluid " id="page-wrapper">
         @RenderBody()
         

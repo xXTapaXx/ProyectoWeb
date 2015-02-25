@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProyectoWeb.Models;
 using System.Web.Helpers;
+using System.Security.Cryptography;
 
 namespace ProyectoWeb.Controllers
 {
@@ -51,9 +52,8 @@ namespace ProyectoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*var decripted = Crypto.Hash(usuario.contrasena);
-                usuario.contrasena = decripted;*/
-               
+                
+                usuario.contrasena = Crypto.Hash(usuario.contrasena);
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");

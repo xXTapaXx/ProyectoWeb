@@ -241,3 +241,7 @@ C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\bin\ru\Microsoft.Data.En
 C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\bin\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
 C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\bin\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
 C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\bin\ru-ru\MsieJavaScriptEngine.resources.dll
+C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\bin\SimpleCrypto.dll
+C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\obj\Debug\ProyectoWeb.Migrations.InitialCreate.resources
+C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\obj\Debug\ProyectoWeb.csproj.GenerateResource.Cache
+C:\Users\Jason\Documents\GitHub\ProyectoWeb\ProyectoWeb\obj\Debug\ProyectoWeb.Migrations.InitialCreate1.resources

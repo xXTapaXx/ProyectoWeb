@@ -10,7 +10,7 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("TConexcion")
         {
         }
     }

@@ -11,27 +11,30 @@ namespace ProyectoWeb.Models
     public class Usuario
     {
         public int id { get; set; }
-        [Required]
+        
         [StringLength(100)]
 
         public string nombre { get; set; }
 
-        [Required]
+        
         [StringLength(100)]
         public string apellidos { get; set; }
 
-        [Required]
+        
         
         public departamentos departamento { get; set; }
 
-        [Required]
+       
         [StringLength(100)]
         public string user { get; set; }
 
-        [Required]
+        
+        [StringLength(200,MinimumLength = 6)]
         [DataType(DataType.Password)]
         
         public string contrasena { get; set; }
+
+
 
         public enum departamentos
         {

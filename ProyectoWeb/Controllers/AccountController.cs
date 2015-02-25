@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using ASP.NET_MVC5_Bootstrap3_3_1_LESS.Models;
+using ProyectoWeb.Models;
 
 namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS.Controllers
 {
@@ -16,7 +17,7 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new UsuarioDbContext())))
         {
         }
 
@@ -41,11 +42,11 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(Usuario usuario,LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
+                var user = await UserManager.FindAsync(usuario.user, usuario.contrasena);
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
