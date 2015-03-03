@@ -18,7 +18,9 @@ namespace ProyectoWeb.Models
         [Column(Order = 2)]
         public int ubicacion { get; set; }
 
+
     }
+
     public class EstadoDbContext : DbContext
     {
         public EstadoDbContext() : base("TConexcion")
@@ -35,7 +37,10 @@ namespace ProyectoWeb.Models
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+
+
     }
+
 }
 
     

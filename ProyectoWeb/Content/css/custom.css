@@ -13,6 +13,12 @@
     GENERAL  STYLES    
     =============================================*/
 
+.oculto {
+display:none;
+}
+#proceso {
+margin: 18% 0% 0% 0%;
+}
 
 .title-top-table {
 border-bottom: 2px solid #a5ced8;
@@ -222,9 +228,7 @@ height: 60px;
 font-size: 23px;
 font-weight: 700;
 }
-.active-menu {
-    background-color:#C90000!important;
-}
+
 
 .arrow {
     float: right;
@@ -349,16 +353,30 @@ background-color: #FFF;
     UI ELEMENTS STYLES     
     =============================================*/
 .btn-circle {
-width: 50px;
-height: 50px;
-padding: 6px 0;
- -webkit-border-radius: 25px;
--moz-border-radius: 25px;
-border-radius: 25px;
+margin: 0% 7% 0% 2%;
+width: 110px;
+height: 110px;
+padding: 38px 0;
+ -webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 100px;
 text-align: center;
-font-size: 12px;
+font-size: 1em;
 line-height: 1.428571429;
 }
+
+.btn-tab
+{
+   border: 2px solid #BEBEBE !important
+}
+
+.active-tabs 
+{
+    border: 4px solid #0E9B2F !important;
+    box-shadow: 7px 3px 5px #888888 !important;
+}
+
+
 
 footer {
     float: right;

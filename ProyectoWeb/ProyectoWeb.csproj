@@ -224,27 +224,21 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuscarOrdenController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdenesController.cs" />
+    <Compile Include="Controllers\ProcesoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502191936258_InitialCreate.cs" />
-    <Compile Include="Migrations\201502191936258_InitialCreate.Designer.cs">
-      <DependentUpon>201502191936258_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502251427424_InitialCreate1.cs" />
-    <Compile Include="Migrations\201502251427424_InitialCreate1.Designer.cs">
-      <DependentUpon>201502251427424_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\Etapas.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Informacion.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -252,15 +246,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\dataTables.bootstrap.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\pagination.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfontba72.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\js\buscar.js" />
     <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\dataTablesBootstrap.js" />
     <Content Include="Scripts\js\jquery-1.10.2.js" />
+    <Content Include="Scripts\js\jquery.bootpag.min.js" />
+    <Content Include="Scripts\js\jquery.dataTables.js" />
+    <Content Include="Scripts\js\jquery.js" />
     <Content Include="Scripts\js\jquery.metisMenu.js" />
     <Content Include="Scripts\js\morris-0.4.3.min.css" />
     <Content Include="Scripts\js\morris.js" />
+    <Content Include="Scripts\js\Proceso.js" />
     <Content Include="Scripts\js\raphael-2.1.0.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -357,6 +360,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\util.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -410,21 +414,14 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Clientes\modal.cshtml" />
+    <Content Include="Views\Proceso\Index.cshtml" />
+    <Content Include="Views\BuscarOrden\Index.cshtml" />
+    <Content Include="Views\Informacion\Ejemplo.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502191936258_InitialCreate.resx">
-      <DependentUpon>201502191936258_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502251427424_InitialCreate1.resx">
-      <DependentUpon>201502251427424_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

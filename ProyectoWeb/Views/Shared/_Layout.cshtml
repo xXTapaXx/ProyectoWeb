@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <meta name="description" content="My ASP.NET Application" />
-
+    <link href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.min.css" rel="stylesheet" />
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -37,9 +37,9 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
                     <li>
                         <a href="#"><i class="fa fa-cogs"></i> Mantenimiento<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="cliente">@Html.RouteLink("Cliente", new { controller = "Clientes", action = "index" })</li>
-                            <li class="usuario">@Html.RouteLink("Usuario", new { controller = "Usuarios", action = "index" })</li>
-                            <li class="informacion">@Html.RouteLink("Informacion", new { controller = "Informacion", action = "index" })</li>
+                            <li class="cliente">@Html.RouteLink("Cliente", new { controller = "Clientes"})</li>
+                            <li class="usuario">@Html.RouteLink("Usuario", new { controller = "Usuarios"})</li>
+                            <li class="informacion">@Html.RouteLink("Informacion", new { controller = "Informacion"})</li>
                         </ul>
                     </li>
 
@@ -47,8 +47,8 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
                         <a href="#"><i class="fa fa-windows"></i> Procesos<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" })</li>
-                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Usuarios", action = "index" })</li>
-                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "Informacion", action = "index" })</li> 
+                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Proceso", action = "index" })</li>
+                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "BuscarOrden", action = "index" })</li> 
                         </ul>
                     </li>
 
@@ -71,6 +71,7 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+   
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -7,35 +7,28 @@ using System.Web;
 
 namespace ProyectoWeb.Models
 {
-    public class Cliente
+    public class Etapas
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string telefono { get; set; }
-        public string correo { get; set; }
-
+        public int id {get;set;}
+    public string etapa { get; set; }
+    public string ubicacion { get; set; }
+    
     }
-
-    public class ClienteDbContext : DbContext
+    public class EtapasDbContext : DbContext
     {
-        public ClienteDbContext() : base("TConexcion")
+        public EtapasDbContext() : base("TConexcion")
         {
 
 
         }
 
-        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Etapas> Etapas { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-
-
     }
 
-
-}
+    }

@@ -42,9 +42,9 @@ namespace ProyectoWeb.Models
             Oficina,
             Taller
         }
+
+       
     }
-
-
     public class UsuarioDbContext : DbContext
     {
         public UsuarioDbContext() : base("TConexcion")
@@ -60,8 +60,5 @@ namespace ProyectoWeb.Models
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-
-    
-}
+    }
 }

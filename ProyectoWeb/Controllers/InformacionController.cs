@@ -13,7 +13,7 @@ namespace ProyectoWeb.Controllers
     public class InformacionController : Controller
     {
         private InformacionDbContext db = new InformacionDbContext();
-
+        private EstadoDbContext estado = new EstadoDbContext();
         // GET: Informacion
         public ActionResult Index()
         {
@@ -52,6 +52,12 @@ namespace ProyectoWeb.Controllers
             {
                 db.Informacion.Add(informacion);
                 db.SaveChanges();
+
+                var crearEstado = estado.Estado.Create();
+                crearEstado.num_orden = informacion.num_orden;
+                crearEstado.ubicacion = 1;
+                estado.Estado.Add(crearEstado);
+                estado.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -122,6 +128,10 @@ namespace ProyectoWeb.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Ejemplo()
+        {
+            return View();
         }
     }
 }

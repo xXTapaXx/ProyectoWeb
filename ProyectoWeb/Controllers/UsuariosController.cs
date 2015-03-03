@@ -19,6 +19,7 @@ namespace ProyectoWeb.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
+
             return View(db.Usuario.ToList());
         }
 

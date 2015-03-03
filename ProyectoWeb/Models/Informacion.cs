@@ -37,6 +37,7 @@ namespace ProyectoWeb.Models
         [Required]
         public string observaciones { get; set; }
     }
+
     public class InformacionDbContext : DbContext
     {
         public InformacionDbContext() : base("TConexcion")
@@ -52,7 +53,5 @@ namespace ProyectoWeb.Models
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-
     }
-}
+    }
