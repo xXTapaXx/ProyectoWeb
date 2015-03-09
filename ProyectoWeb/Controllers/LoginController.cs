@@ -11,44 +11,90 @@ namespace ProyectoWeb.Controllers
 {
     public class LoginController : Controller
     {
-        
+        private ImprentaContext db = new ImprentaContext(); 
+        HttpCookie aCookie;
         // GET: Login
+        public Boolean session()
+        {
+            if (Request.Cookies["userName"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public ActionResult Index()
         {
-            return View();
+            if (session())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
         public ActionResult login()
         {
-            return View();
-        }
+            if (session())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
 
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult login([Bind(Include = "user,contrasena")] Usuario usuario)
         {
-            
-                if (IsValid(usuario.user, usuario.contrasena))
-                {
-                    FormsAuthentication.SetAuthCookie(usuario.user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Usuario Incorrecto"); 
-                }
-            
+
+            if (IsValid(usuario.user, usuario.contrasena))
+            {
+                Response.Cookies["userName"].Value = usuario.user;
+                         
+                aCookie = new HttpCookie("lastVisit");
+                aCookie.Value = DateTime.Now.ToString();
+                aCookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(aCookie);
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Usuario Incorrecto");
+            }
+
             return View(usuario);
         }
 
+        public ActionResult logout()
+        {
+            string cookieName;
+            int limit = Request.Cookies.Count;
+            for (int i = 0; i < limit; i++)
+            {
+                cookieName = Request.Cookies[i].Name;
+                aCookie = new HttpCookie(cookieName);
+                aCookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(aCookie);
+            }
+
+            return RedirectToAction("Index", "Login");
+        }
         private bool IsValid(string user, string password)
         {
-            
+
 
             bool isValid = false;
 
-            using (var dbContext = new UsuarioDbContext())
+            using (var dbContext = new ImprentaContext())
             {
                 var usuario = dbContext.Usuario.FirstOrDefault(u => u.user == user);
 
@@ -62,8 +108,9 @@ namespace ProyectoWeb.Controllers
                 }
             }
 
-                return isValid;
+            return isValid;
         }
+
 
 
 

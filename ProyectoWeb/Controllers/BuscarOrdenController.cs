@@ -10,30 +10,89 @@ namespace ProyectoWeb.Controllers
 {
     public class BuscarOrdenController : Controller
     {
-        private InformacionDbContext informacion = new  InformacionDbContext();
+        private ImprentaContext db = new ImprentaContext();
+
+        public Boolean session()
+        {
+            if (Request.Cookies["userName"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // GET: BuscarOrden
         public ActionResult Index()
         {
-            return View();
+            if (session())
+            {
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         [Route("BuscarOrden/Buscar/{tipo}/{buscar}")]
         public Object buscarOrden(string tipo , string buscar)
         {
-            Object buscarOrden = null;
-            if (tipo == "num_orden")
+            if (session())
             {
-                 buscarOrden = informacion.Informacion.SqlQuery("SELECT * FROM informacion where num_orden like '%" + buscar + "%'").ToList();
-            }
-            else if (tipo == "trabajo")
+
+                List<Informacion> buscarOrden = new List<Informacion>();
+            List<Etapas> buscarProceso = new List<Etapas>() ;
+            List<Object> listEtapa = new List<Object>();
+
+                if (tipo == "num_orden")
+                {
+                    buscarOrden = db.Informacion.SqlQuery("SELECT * FROM informacion where num_orden like '%" + buscar + "%'").ToList();
+                }
+                else if (tipo == "vendedora")
+                {
+                    buscarOrden = db.Informacion.SqlQuery("SELECT * FROM informacion INNER JOIN usuario ON informacion.idusuario = usuario.id where usuario.nombre like '%" + buscar + "%'").ToList();
+                }
+                else if (tipo == "cliente")
+                {
+                    buscarOrden = db.Informacion.SqlQuery("SELECT * FROM informacion INNER JOIN cliente ON informacion.idcliente = cliente.id where cliente.nombre like '%" + buscar + "%'").ToList();
+                }
+                else if (tipo == "trabajo")
+                {
+                    buscarOrden = db.Informacion.SqlQuery("SELECT * FROM informacion where nombre_trabajo like '%" + buscar + "%'").ToList();
+                }
+
+            for (int i = 0; i < buscarOrden.Count; i++)
             {
-                 buscarOrden = informacion.Informacion.SqlQuery("SELECT * FROM informacion where nombre_trabajo like '%" + buscar + "%'").ToList();
+                var buscarEstado = db.Estado.SqlQuery("SELECT * FROM estado where num_orden ='" + buscarOrden[i].num_orden + "'").ToList();
+                if (buscarEstado != null)
+                {
+                    var prueba = buscarOrden[i].num_orden;
+                    buscarProceso = db.Etapas.SqlQuery("SELECT * FROM etapas INNER JOIN estado ON estado.ubicacion = etapas.ubicacion WHERE estado.num_orden = '" + buscarOrden[i].num_orden + "' order By estado.ubicacion DESC limit 1").ToList();
+                }
+                else {
+                    buscarProceso = db.Etapas.SqlQuery("SELECT etapa FROM etapas where num_orden ='" + buscarOrden[i].num_orden + "'").ToList();
+                }
+                
+                listEtapa.Add(buscarProceso);
             }
+
               
 
-            var retorno = JsonConvert.SerializeObject(buscarOrden);
+            var JsonOrden = JsonConvert.SerializeObject(buscarOrden);
+            var JsonProceso = JsonConvert.SerializeObject(listEtapa);
 
-            return retorno;
+            var retorno = new {orden = JsonOrden, etapa = JsonProceso};
+
+            return JsonConvert.SerializeObject(retorno);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

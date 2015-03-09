@@ -50,8 +50,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button type="submit" id="btn-users-save" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</button> |
+            @Html.RouteLink(" Regresar", new { controller = "Clientes", action = "Index" }, new { @class = "glyphicon glyphicon-circle-arrow-left btn btn-warning " })
         </div>
     }
 </div>

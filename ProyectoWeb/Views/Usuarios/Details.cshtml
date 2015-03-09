@@ -43,17 +43,12 @@
             @Html.DisplayFor(model => model.user)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contrasena)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.contrasena)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink(" Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-primary glyphicon glyphicon-pencil"})|
+    @Html.RouteLink(" Regresar", new { controller = "Usuarios", action = "Index" }, new { @class = "glyphicon glyphicon-circle-arrow-left btn btn-warning " })
 </p>

@@ -23,32 +23,38 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Imprenta San Carlos</a>
             </div>
-            <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()/@DateTime.Now.Year &nbsp;<a href="#" class="btn btn-danger square-btn-adjust">Logout</a></div>
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle login" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Bienvenido @Request.Cookies["userName"].Value<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/login/logout"><i class="glyphicon glyphicon-log-out"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center"><img src="../../../images/find_user.png" class="user-image img-responsive" /></li>
-
-                    <li>
+                    <li class="mantenimiento">
                         <a href="#"><i class="fa fa-cogs"></i> Mantenimiento<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="cliente">@Html.RouteLink("Cliente", new { controller = "Clientes"})</li>
-                            <li class="usuario">@Html.RouteLink("Usuario", new { controller = "Usuarios"})</li>
-                            <li class="informacion">@Html.RouteLink("Informacion", new { controller = "Informacion"})</li>
+
+                            <li class ="cliente"><a href="Clientes" ">Cliente</a></liclass>
+                            <li class="usuario">@Html.RouteLink("Usuario", new { controller = "Usuarios", Action = "Index" })</li>
+                            <li class="informacion">@Html.RouteLink("Informacion", new { controller = "Informacion" })</li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="#"><i class="fa fa-windows"></i> Procesos<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="cliente">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" })</li>
-                            <li class="usuario">@Html.RouteLink(" Proceso Orden", new { controller = "Proceso", action = "index" })</li>
-                            <li class="informacion">@Html.RouteLink(" Buscar Orden", new { controller = "BuscarOrden", action = "index" })</li> 
+                            <li class="orden">@Html.RouteLink(" Ordenes De La Semana", new { controller = "Ordenes", action = "index" })</li>
+                            <li class="proceso">@Html.RouteLink(" Proceso Orden", new { controller = "Proceso", action = "index" })</li>
+                            <li class="buscar">@Html.RouteLink(" Buscar Orden", new { controller = "BuscarOrden", action = "index" })</li>
                         </ul>
                     </li>
 
@@ -73,5 +79,6 @@ font-size: 16px;">Last access : @DateTime.Now.Day/@DateTime.Now.Month.ToString()
     @Scripts.Render("~/bundles/bootstrap")
    
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

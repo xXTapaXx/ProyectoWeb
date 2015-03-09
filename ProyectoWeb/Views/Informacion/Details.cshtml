@@ -1,4 +1,4 @@
-﻿@model ProyectoWeb.Models.Informacion
+﻿@model ProyectoWeb.Models.Informacion_Cliente
 
 @{
     ViewBag.Title = "Details";
@@ -20,19 +20,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idcliente)
+            @Html.DisplayNameFor(model => model.cliente)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idcliente)
+            @Html.DisplayFor(model => model.cliente)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idusuario)
+            @Html.DisplayNameFor(model => model.usuario)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idusuario)
+            @Html.DisplayFor(model => model.usuario)
         </dd>
 
         <dt>
@@ -59,17 +59,10 @@
             @Html.DisplayFor(model => model.nombre_trabajo)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.observaciones)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.observaciones)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(" Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-primary glyphicon glyphicon-pencil" }) |
+    @Html.RouteLink(" Regresar", new { controller = "Informacion", action = "Index" }, new { @class = "glyphicon glyphicon-circle-arrow-left btn btn-warning " })
 </p>

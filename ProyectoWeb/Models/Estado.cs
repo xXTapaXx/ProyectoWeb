@@ -21,25 +21,7 @@ namespace ProyectoWeb.Models
 
     }
 
-    public class EstadoDbContext : DbContext
-    {
-        public EstadoDbContext() : base("TConexcion")
-        {
-
-
-        }
-
-        public DbSet<Estado> Estado { get; set; }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-
-
-
-    }
+   
 
 }
 

@@ -9,39 +9,73 @@ using System.Web.Mvc;
 using ProyectoWeb.Models;
 using System.Web.Helpers;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace ProyectoWeb.Controllers
 {
     public class UsuariosController : Controller
     {
-        private UsuarioDbContext db = new UsuarioDbContext();
+        private ImprentaContext db = new ImprentaContext();
+
+        public Boolean session()
+        {
+            if (Request.Cookies["userName"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         // GET: Usuarios
         public ActionResult Index()
         {
+            if (session())
+            {
 
-            return View(db.Usuario.ToList());
+                return View(db.Usuario.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: Usuarios/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (session())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuario usuario = db.Usuario.Find(id);
+                if (usuario == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(usuario);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Login");
             }
-            return View(usuario);
         }
 
         // GET: Usuarios/Create
         public ActionResult Create()
         {
-            return View();
+            if (session())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: Usuarios/Create
@@ -51,31 +85,45 @@ namespace ProyectoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,apellidos,departamento,user,contrasena")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+            if (session())
             {
-                
-                usuario.contrasena = Crypto.Hash(usuario.contrasena);
-                db.Usuario.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
 
-            return View(usuario);
+                    usuario.contrasena = Crypto.Hash(usuario.contrasena);
+                    db.Usuario.Add(usuario);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(usuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (session())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuario usuario = db.Usuario.Find(id);
+                if (usuario == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(usuario);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Login");
             }
-            return View(usuario);
         }
 
         // POST: Usuarios/Edit/5
@@ -85,28 +133,42 @@ namespace ProyectoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,apellidos,departamento,user,contrasena")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+            if (session())
             {
-                db.Entry(usuario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(usuario).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(usuario);
             }
-            return View(usuario);
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (session())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuario usuario = db.Usuario.Find(id);
+                if (usuario == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(usuario);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Login");
             }
-            return View(usuario);
         }
 
         // POST: Usuarios/Delete/5
@@ -114,10 +176,17 @@ namespace ProyectoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = db.Usuario.Find(id);
-            db.Usuario.Remove(usuario);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (session())
+            {
+                Usuario usuario = db.Usuario.Find(id);
+                db.Usuario.Remove(usuario);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -127,6 +196,21 @@ namespace ProyectoWeb.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [Route("validar")]
+        public object validar()
+        {
+            if (session())
+            {
+                var retorno = db.Usuario.SqlQuery("SELECT * from usuario where user = '" + Request.Cookies["userName"].Value + "'").ToList();
+
+                return JsonConvert.SerializeObject(retorno);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
         }
     }
 }

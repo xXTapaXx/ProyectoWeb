@@ -10,10 +10,11 @@ namespace ProyectoWeb.Models
 {
     public class Usuario
     {
+        [Key]
         public int id { get; set; }
         
         [StringLength(100)]
-
+        
         public string nombre { get; set; }
 
         
@@ -45,20 +46,5 @@ namespace ProyectoWeb.Models
 
        
     }
-    public class UsuarioDbContext : DbContext
-    {
-        public UsuarioDbContext() : base("TConexcion")
-        {
-
-
-        }
-
-        public DbSet<Usuario> Usuario { get; set; }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-    }
+   
 }

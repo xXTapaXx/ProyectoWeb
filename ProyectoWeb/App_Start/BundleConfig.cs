@@ -21,6 +21,12 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             cssBundle.Orderer = nullOrderer;
             bundles.Add(cssBundle);
 
+            var cssLoginBundle = new StyleBundle("~/bundles/login");
+            cssLoginBundle.Include("~/Content/bootstrap/bootstrap.less", "~/Content/css/font-awesome.css", "~/Content/css/custom.css", "~/Content/css/login.css");
+            cssLoginBundle.Transforms.Add(cssTransformer);
+            cssLoginBundle.Orderer = nullOrderer;
+            bundles.Add(cssLoginBundle);
+
             var cssDataTableBundle = new StyleBundle("~/bundles/cssDataTable");
             cssDataTableBundle.Include( "~/Content/css/dataTables.bootstrap.css");
             cssDataTableBundle.Transforms.Add(cssTransformer);
@@ -49,16 +55,22 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             bundles.Add(modernizrBundle);
 
             var bootstrapBundle = new ScriptBundle("~/bundles/bootstrap");
-            bootstrapBundle.Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js",  "~/Scripts/js/jquery.metisMenu.js", "~/Scripts/js/raphael-2.1.0.min.js", "~/Scripts/js/morris.js", "~/Scripts/js/custom.js","~/Scripts/js/jquery.bootpag.min.js");
+            bootstrapBundle.Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js",  "~/Scripts/js/jquery.metisMenu.js", "~/Scripts/js/raphael-2.1.0.min.js", "~/Scripts/js/morris.js", "~/Scripts/js/custom.js","~/Scripts/js/jquery.bootpag.min.js", "~/Scripts/js/validate.js");
             bootstrapBundle.Transforms.Add(jsTransformer);
             bootstrapBundle.Orderer = nullOrderer;
             bundles.Add(bootstrapBundle);
 
             var dataTableBundle = new ScriptBundle("~/bundles/datatable");
-            dataTableBundle.Include("~/Scripts/js/jquery.js", "~/Scripts/js/jquery.dataTables.js", "~/Scripts/js/dataTablesBootstrap.js");
+            dataTableBundle.Include("~/Scripts/js/jquery.js", "~/Scripts/js/jquery.dataTables.js", "~/Scripts/js/dataTablesBootstrap.js", "~/Scripts/js/util.js");
             dataTableBundle.Transforms.Add(jsTransformer);
             dataTableBundle.Orderer = nullOrderer;
             bundles.Add(dataTableBundle);
+
+            var dataTable2Bundle = new ScriptBundle("~/bundles/datatable2");
+            dataTable2Bundle.Include("~/Scripts/js/jquery.js", "~/Scripts/js/jquery.dataTables.js", "~/Scripts/js/dataTablesBootstrap.js");
+            dataTable2Bundle.Transforms.Add(jsTransformer);
+            dataTable2Bundle.Orderer = nullOrderer;
+            bundles.Add(dataTable2Bundle);
 
 
 
@@ -73,6 +85,12 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             buscarBundle.Transforms.Add(jsTransformer);
             buscarBundle.Orderer = nullOrderer;
             bundles.Add(buscarBundle);
+
+            var informacionBundle = new ScriptBundle("~/bundles/informacion");
+            informacionBundle.Include("~/Scripts/js/popup.js", "~/Scripts/js/informacion.js");
+            informacionBundle.Transforms.Add(jsTransformer);
+            informacionBundle.Orderer = nullOrderer;
+            bundles.Add(informacionBundle);
 
         }
     }

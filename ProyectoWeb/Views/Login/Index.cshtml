@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@model ProyectoWeb.Models.Usuario
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="~/Content/css/login.css" type="text/css" media="all" />
+   
+    @Styles.Render("~/bundles/login")
+    
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+   @using (Html.BeginForm("Login", "Login"))
+   {
+    @Html.AntiForgeryToken()
+        <div class="login-body" id="element_to_pop_up" style="display:none">
+            <article class="container-login center-block">
+                <section>
+                    
+                    <div class="tab-content tabs-login col-lg-12 col-md-12 col-sm-12 cols-xs-12">
+                        <div id="login-access" class="tab-pane fade active in">
+                            <h2><i class="glyphicon glyphicon-log-in"></i> Login</h2>
+
+                            <div class="form-group">
+                                    @Html.EditorFor(model => model.user, new { htmlAttributes = new { @class = "form-control", @id = "login_value", @placeholder = "User" } })
+                                    @Html.ValidationMessageFor(model => model.user, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                    @Html.EditorFor(model => model.contrasena, new { htmlAttributes = new { @class = "form-control", @id="password", @placeholder="Password" } })
+                                    @Html.ValidationMessageFor(model => model.contrasena, "", new { @class = "text-danger" })
+                                
+                            </div>
+
+                            <br />
+                            <div class="form-group ">
+                                <button type="submit" name="log-me-in" id="submit"  tabindex="5" class="btn btn-lg btn-primary">Entra</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+   }
+
+   
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/informacion")
+
+    <script>
+        $('#element_to_pop_up').bPopup({
+
+            appendTo: 'form'
+                  , zIndex: 2
+                  , modalClose: false
+        });
+    </script>
+
+
+</body>
+</html>

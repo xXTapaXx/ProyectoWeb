@@ -7,21 +7,36 @@
 <div class="row">
     <div class="col-lg-12">
         <div id="content">
-            <div class="dataTables_length" id="example_length"><label>Show <select name="example_length" aria-controls="example" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
-            <div id="example_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="example"></label></div>
+            <h1 class="title-top-table">
+                Cliente
+            </h1>
+            @using (Html.BeginForm("Ordenes", "Ordenes"))
+            {
+                <div class="form-group">
+                    @Html.Editor("fechaBuscar", new { htmlAttributes = new { @class = "form-control", @placeholder = "Buscar", @type = "date" } })
+                    @Html.ValidationMessage("fechaBuscar", "", new { @class = "text-danger" })
+
+                </div>
+                    <div class="form-group">
+
+                        <input type="submit" value="Buscar" class="btn btn-primary glyphicon glyphicon-search col-lg-12" />
+                    </div>
+
+            }
             <table id="mytable" class="table table-striped table-bordered table-responsive">
-                <h1 class="title-top-table">
-                    Cliente
-
-
-                    <tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th></tr>
-                    @for (var i = 0; i < ViewBag.Lunes.Count + ViewBag.Martes.Count + ViewBag.Miercoles.Count + ViewBag.Jueves.Count + ViewBag.Viernes.Count; i++)
+                
+                <br /><br />
+                    <thead>
+                        <tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th></tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < ViewBag.Lunes.Count + ViewBag.Martes.Count + ViewBag.Miercoles.Count + ViewBag.Jueves.Count + ViewBag.Viernes.Count; i++)
                         {
                             if (i < ViewBag.Lunes.Count || i < ViewBag.Martes.Count || i < ViewBag.Miercoles.Count || i < ViewBag.Jueves.Count || i < ViewBag.Viernes.Count)
                             {
                                 <tr>
 
-                                @if (i < ViewBag.Lunes.Count)
+                                    @if (i < ViewBag.Lunes.Count)
                                     {
                                         if (@ViewBag.Lunes[i].ubicacion == 5)
                                         {
@@ -40,7 +55,7 @@
                                         <td></td>
                                     }
 
-                                @if (i < ViewBag.Martes.Count)
+                                    @if (i < ViewBag.Martes.Count)
                                     {
 
                                         if (@ViewBag.Martes[i].ubicacion == 5)
@@ -58,7 +73,7 @@
                                         <td></td>
                                     }
 
-                                @if (i < ViewBag.Miercoles.Count)
+                                    @if (i < ViewBag.Miercoles.Count)
                                     {
 
                                         if (@ViewBag.Miercoles[i].ubicacion == 5)
@@ -76,7 +91,7 @@
                                         <td></td>
                                     }
 
-                                @if (i < ViewBag.Jueves.Count)
+                                    @if (i < ViewBag.Jueves.Count)
                                     {
 
                                         if (@ViewBag.Jueves[i].ubicacion == 5)
@@ -94,7 +109,7 @@
                                         <td></td>
                                     }
 
-                                @if (i < ViewBag.Viernes.Count)
+                                    @if (i < ViewBag.Viernes.Count)
                                     {
 
                                         if (@ViewBag.Viernes[i].ubicacion == 5)
@@ -112,13 +127,13 @@
                                         <td></td>
                                     }
 
-                            </tr>
+                                </tr>
                             }
 
 
 
                         }
-
+                    </tbody>
 
 
             </table>
@@ -127,16 +142,16 @@
     </div>
 </div>
 
-
-
 @section scripts
 {
-    <script>
-                $("li.ordenes").addClass("active");
-    </script>
-
- 
+    @Scripts.Render("~/bundles/datatable")
 }
+
+
+
+
+
+
 
 
 

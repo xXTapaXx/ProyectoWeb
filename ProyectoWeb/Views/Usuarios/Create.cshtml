@@ -57,12 +57,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" id="btn-users-save" class="btn btn-success btn-group-sm col-lg-10"><span class="glyphicon glyphicon-ok-sign"></span> Agregar Usuario</button>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="col-md-offset-2">
+    @Html.RouteLink(" Regresar", new { controller = "Clientes", action = "Index" }, new { @class = "glyphicon glyphicon-circle-arrow-left btn btn-warning " })
 </div>
